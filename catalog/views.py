@@ -1,9 +1,9 @@
 from django.shortcuts import render
 
 
-def home(reqwest):
-    return render(reqwest, 'catalog/home.html')
+def home(request):
+    return render(request, 'home.html')
 
 
-def contacts(reqwest):
-    return render(reqwest, 'contacts.html')
+def contacts(request):
+    return render(request, 'contacts.html')
