@@ -2,21 +2,42 @@ from django.db import models
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=50,
-                            verbose_name='Наименование продукта',
-                            help_text='Введите наименование продукта')
-    description = models.TextField(verbose_name='Описание продукта', blank=True, null=True)
-    photo = models.ImageField(upload_to='product/photo',
-                              blank=True,
-                              null=True)
-    category = models.CharField(max_length=100,
-                                verbose_name='Категория продукта', blank=True, null=True)
-    price = models.IntegerField(verbose_name='Цена продукта', blank=True, null=True)
-    date_create = models.DateTimeField(verbose_name='Дата создания', blank=True, null=True)
-    date_change = models.DateTimeField(verbose_name='Дата последнего изменения')
-    manufactured_at = models.DateTimeField(verbose_name='Дата производства продукта',
-                                           blank=True,
-                                           null=True)
+    name = models.CharField(
+        max_length=50,
+        verbose_name='Наименование продукта',
+        help_text='Введите наименование продукта'
+    )
+    description = models.TextField(
+        verbose_name='Описание продукта',
+        blank=True,
+        null=True
+    )
+    photo = models.ImageField(
+        upload_to='product/photo',
+        blank=True,
+        null=True
+    )
+    category = models.CharField(
+        max_length=100,
+        verbose_name='Категория продукта',
+        blank=True,
+        null=True
+    )
+    price = models.IntegerField(
+        verbose_name='Цена продукта',
+        blank=True,
+        null=True
+    )
+    date_create = models.DateField(
+        verbose_name='Дата создания',
+        blank=True,
+        null=True
+    )
+    date_change = models.DateTimeField(
+        verbose_name='Дата последнего изменения',
+        blank=True,
+        null=True
+    )
 
     class Meta:
         verbose_name = "Продукт"
@@ -28,10 +49,16 @@ class Product(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=50,
-                            verbose_name='Наименование категории',
-                            help_text='Введите наименование категории')
-    description = models.TextField(verbose_name='Описание категории')
+    name = models.CharField(
+        max_length=50,
+        verbose_name='Наименование категории',
+        help_text='Введите наименование категории'
+    )
+    description = models.TextField(
+        verbose_name='Описание категории',
+        blank=True,
+        null=True,
+    )
 
     class Meta:
         verbose_name = "Категория"
