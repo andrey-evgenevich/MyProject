@@ -8,6 +8,12 @@ def products_list(request):
     return render(request, "product_list.html", context)
 
 
+def products_detail(request, pk):
+    product = Product.objects.get(pk=pk)
+    context = {"product": product}
+    return render(request, "products_detail.html", context)
+
+
 def home(request):
     return render(request, "home.html")
 
