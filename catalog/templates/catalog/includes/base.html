@@ -179,7 +179,7 @@
 
 
 <header data-bs-theme="dark">
-    {% include 'includes/inc_menu.html' %}
+    {% include 'catalog/includes/inc_menu.html' %}
 </header>
 
 <main>
@@ -188,11 +188,16 @@
         <div class="row py-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-light">Имя лучшего в мире магазина</h1>
-                <p class="lead text-body-secondary">Здесь могло бы быть самое красочное описание магазина, но здесь
+                <p class="lead text-body-secondary">
+                    Здесь могло бы быть самое красочное описание магазина, но здесь
                     будет старый и не смешной анекдот
                     — Мам, я решил жить отдельно от вас с папой.
                     — Ну тогда поздравляю с началом самостоятельной жизни!
-                    — Спасибо. Ваши с папой вещи я уже собрал!</p>
+                    — Спасибо. Ваши с папой вещи я уже собрал!
+                </p>
+                <p>
+                    <a class="btn btn-primary" href="{% url 'catalog:product_create' %}" role="button">Создать питомца</a>
+                </p>
                 <p>
                     <a href="#" class="btn btn-primary my-2">Main call to action</a>
                     <a href="#" class="btn btn-secondary my-2">Secondary action</a>
