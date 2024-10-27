@@ -20,7 +20,7 @@ class Materials(models.Model):
         help_text="Введите содержимое",
     )
     photo = models.ImageField(upload_to="product/photo", blank=True, null=True)
-    date_create = models.DateField(verbose_name="Дата создания", blank=True, null=True)
+    date_create = models.DateField(auto_now_add=True, verbose_name="Дата создания")
     is_published = models.BooleanField(default=True, verbose_name="Опубликовано")
     views_count = models.PositiveIntegerField(default=0, verbose_name="Просмотры")
 

@@ -1,7 +1,10 @@
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from catalog.models import Product
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic.base import TemplateView
+# from articles.models import Article
 
 
 class ProductListView(ListView):
@@ -29,9 +32,15 @@ class ProductDeleteView(DeleteView):
     success_url = reverse_lazy('catalog:products_list')
 
 
-def home(request):
-    return render(request, "catalog/home.html")
+class HomeTemplateView(TemplateView):
+    template_name = "catalog/home.html"
+
+# def home(request):
+#     return render(request, "catalog/home.html")
 
 
-def contacts(request):
-    return render(request, "catalog/contacts.html")
+class ContactsTemplateView(TemplateView):
+    template_name = "catalog/contacts.html"
+
+# def contacts(request):
+#     return render(request, "catalog/contacts.html")
