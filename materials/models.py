@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+from django import forms
 
 
 class Materials(models.Model):
@@ -20,7 +22,7 @@ class Materials(models.Model):
         help_text="Введите содержимое",
     )
     photo = models.ImageField(upload_to="product/photo", blank=True, null=True)
-    date_create = models.DateField(auto_now_add=True, verbose_name="Дата создания")
+    date_create = models.DateField(default=timezone.now, verbose_name="Дата создания")
     is_published = models.BooleanField(default=True, verbose_name="Опубликовано")
     views_count = models.PositiveIntegerField(default=0, verbose_name="Просмотры")
 
@@ -28,6 +30,12 @@ class Materials(models.Model):
         verbose_name = "Материал"
         verbose_name_plural = "Материалы"
         ordering = ["name"]
+
+        widgets = {
+            'views_count': forms.NumberInput(
+                attrs={'readonly': True, 'disabled': True}
+            )
+        }
 
     def __str__(self):
         return self.name
