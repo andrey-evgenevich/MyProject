@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-from django import forms
 
 
 class Materials(models.Model):
@@ -30,12 +29,6 @@ class Materials(models.Model):
         verbose_name = "Материал"
         verbose_name_plural = "Материалы"
         ordering = ["name"]
-
-        widgets = {
-            'views_count': forms.NumberInput(
-                attrs={'readonly': True, 'disabled': True}
-            )
-        }
 
     def __str__(self):
         return self.name
