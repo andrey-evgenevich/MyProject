@@ -26,7 +26,7 @@ class MaterialsDetailView(DetailView):
 
 class MaterialsCreateView(CreateView):
     model = Materials
-    fields = ("name", "slug", "content", "photo", "date_create", "is_published", "views_count")
+    fields = ("name", "slug", "content", "photo", "date_create", "is_published")
     success_url = reverse_lazy('materials:materials_list')
 
     def form_valid(self, form):
