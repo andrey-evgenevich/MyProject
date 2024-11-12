@@ -83,4 +83,4 @@ class Version(models.Model):
     class Meta:
         verbose_name = "Версия"
         verbose_name_plural = "Версии"
-        ordering = ["product", "version_number", "version_name"]
+        ordering = ["product", "version_name", "version_number"]
