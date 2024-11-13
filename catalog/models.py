@@ -59,28 +59,30 @@ class Category(models.Model):
 
 
 class Version(models.Model):
-    class Version(models.Model):
-        product = models.ForeignKey(
-            Product,
-            verbose_name="Наименование продукта",
-            related_name="version",
-            on_delete=models.SET_NULL,
-        )
-        version_number = models.PositiveIntegerField(
-            default=0,
-            verbose_name="Номер версии продукта",
-            help_text="Введите номер версии продукта",
-        )
-        version_name = models.CharField(
-            max_length=50,
-            verbose_name="Наименование версии продукта",
-            help_text="Введите наименование версии продукта",
-        )
-        is_current = models.BooleanField(
-            verbose_name="признак текущей версии", help_text="Версия активна?", default=True
-        )
+    product = models.ForeignKey(
+        Product,
+        verbose_name="Наименование продукта",
+        related_name="version",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+    )
+    version_number = models.PositiveIntegerField(
+        default=0,
+        verbose_name="Номер версии продукта",
+        help_text="Введите номер версии продукта",
+    )
+    version_name = models.CharField(
+        max_length=50,
+        verbose_name="Наименование версии продукта",
+        help_text="Введите наименование версии продукта",
+    )
+    is_current = models.BooleanField(
+        verbose_name="признак текущей версии", help_text="Версия активна?", default=True
+    )
 
-    class Meta:
-        verbose_name = "Версия"
-        verbose_name_plural = "Версии"
-        ordering = ["product", "version_name", "version_number"]
+
+class Meta:
+    verbose_name = "Версия"
+    verbose_name_plural = "Версии"
+    ordering = ["product", "version_name", "version_number"]
