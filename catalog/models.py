@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import User
+
 
 class Product(models.Model):
     name = models.CharField(
@@ -80,6 +82,7 @@ class Version(models.Model):
     is_current = models.BooleanField(
         verbose_name="признак текущей версии", help_text="Версия активна?", default=True
     )
+    owner = models.ForeignKey(User, verbose_name="Владелец", on_delete=models.SET_NULL, null=True, blank=True,)
 
 
 class Meta:
