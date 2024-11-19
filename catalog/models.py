@@ -26,6 +26,7 @@ class Product(models.Model):
     date_change = models.DateTimeField(
         verbose_name="Дата последнего изменения", blank=True, null=True
     )
+    owner = models.ForeignKey(User, verbose_name="Владелец", on_delete=models.SET_NULL, blank=True, null=True)
 
     class Meta:
         verbose_name = "Продукт"
