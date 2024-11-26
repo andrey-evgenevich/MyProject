@@ -8,10 +8,14 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from django.views.generic.base import TemplateView
 # from articles.models import Article
 from django.contrib.auth.mixins import LoginRequiredMixin
+from catalog.services import get_product_from_cache
 
 
 class ProductListView(ListView):
     model = Product
+
+    def get_queryset(self):
+        return get_product_from_cache(Product)
 
 
 class ProductDetailView(LoginRequiredMixin, DetailView):

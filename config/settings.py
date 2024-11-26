@@ -1,11 +1,12 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-h6h!(rp*+)diz%1**8($+ta7gy5ei-@5j1)vbls8n-!m$=k(2k"
+SECRET_KEY = os.getenv("SECRET_KEY")
 
-DEBUG = True
+DEBUG = os.getenv("DEBUG", False) == 'True'
 
 ALLOWED_HOSTS = []
 
@@ -54,11 +55,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "project_db",
-        "USER": "postgres",
-        "PASSWORD": "123456",
-        "HOST": "127.0.0.1",
-        "PORT": "5432",
+        "NAME": os.getenv("NAME_DB"),
+        "USER": os.getenv("USER_DB"),
+        "PASSWORD": os.getenv("PASSWORD_DB"),
+        "HOST": os.getenv("HOST_DB"),
+        "PORT": os.getenv("PORT_DB"),
     }
 }
 
@@ -102,12 +103,20 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
 
-EMAIL_HOST = 'smtp.yandex.ru'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = "andrey.evgenevich.s@yandex.ru"
-EMAIL_HOST_PASSWORD = "xefvgecpmraqvroo"
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = os.getenv("EMAIL_PORT")
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS", False) == "True"
+EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL", False) == "True"
 
 SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+CACHE_ENABLED = True
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": os.getenv("LOCATION"),
+    }
+}
